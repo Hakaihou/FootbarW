@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <title>Title</title>
+</head>
+<body>
+<center class="widget-footbar" id="widget-foorbar">
+    <div class="widget-footbar-container">
+        <img class="widget-footbar-logo" src="gpt-logo.png" alt="">
+        <div class="widget-footbar-text">The system has already paid over: <span class="widget-footbar-sum"
+                                                                                 id="widget-footbar-sum">€ 115286321</span>
+        </div>
+        <a href="{offer}" class="widget-footbar-link">Join now</a>
+        <svg class="widget-footbar-close" width="8" height="8" viewBox="0 0 8 8" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.16998 6.83004L6.82998 1.17004" stroke="#292D32" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"/>
+            <path d="M6.82998 6.83004L1.16998 1.17004" stroke="#292D32" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"/>
+        </svg>
+        <script>
+            // Функция для форматирования суммы с разделением по три числа
+            function formatNumberWithSpaces(number) {
+                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+            }
+
+            // Функция для обновления суммы
+            function updateSum() {
+                const element = document.getElementById('widget-footbar-sum');
+                if (!element) return;
+
+                // Извлекаем текущую сумму (только цифры)
+                const text = element.innerText.trim();
+                const currencySymbol = text.match(/[^\d\s]/g)?.join('') || ''; // Извлекаем валютный символ
+                let currentSum = parseFloat(text.replace(/[^\d]/g, ''));
+
+                // Увеличиваем сумму на 50
+                currentSum += 150;
+
+                // Форматируем сумму с разделением по 3 числа и добавляем валютный символ
+                const formattedSum = currencySymbol + ' ' + formatNumberWithSpaces(currentSum);
+
+                // Обновляем текст элемента
+                element.innerText = formattedSum;
+            }
+
+            // Инициализация: форматируем сумму сразу при загрузке
+            document.addEventListener('DOMContentLoaded', () => {
+                const element = document.getElementById('widget-footbar-sum');
+                if (element) {
+                    const text = element.innerText.trim();
+                    const currencySymbol = text.match(/[^\d\s]/g)?.join('') || ''; // Извлекаем валютный символ
+                    const currentSum = parseFloat(text.replace(/[^\d]/g, ''));
+
+                    // Форматируем сумму сразу
+                    element.innerText = currencySymbol + ' ' + formatNumberWithSpaces(currentSum);
+                }
+            });
+
+            // Запускаем обновление суммы каждую секунду
+            setInterval(updateSum, 100);
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const footbar = document.querySelector('.widget-footbar');
+                const closeButton = document.querySelector('.widget-footbar-close');
+
+                if (footbar) {
+                    // Появление с анимацией
+                    footbar.style.height = '0';
+                    const contentHeight = footbar.scrollHeight + 'px';
+
+                    setTimeout(() => {
+                        footbar.style.height = contentHeight;
+
+                        footbar.addEventListener(
+                            'transitionend',
+                            () => {
+                                footbar.style.height = 'auto'; // Сбрасываем высоту после раскрытия
+                            },
+                            {once: true}
+                        );
+                    }, 100);
+
+                    // Закрытие с анимацией
+                    if (closeButton) {
+                        closeButton.addEventListener('click', () => {
+                            // Устанавливаем высоту обратно на 0px
+                            footbar.style.height = contentHeight; // Обновляем высоту перед скрытием
+                            setTimeout(() => {
+                                footbar.style.height = '0'; // Запускаем анимацию высоты
+
+                                // Удаляем элемент только после завершения перехода
+                                footbar.addEventListener(
+                                    'transitionend',
+                                    (e) => {
+                                        if (e.propertyName === 'height') {
+                                            footbar.remove(); // Удаляем блок после завершения анимации
+                                        }
+                                    },
+                                    {once: true}
+                                );
+                            }, 50); // Небольшая задержка для запуска плавного эффекта
+                        });
+                    }
+                }
+            });
+
+
+        </script>
+    </div>
+</center>
+</body>
+</html>
