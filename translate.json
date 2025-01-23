@@ -1,0 +1,12 @@
+{
+  "en-US": {
+    "MainText": "The system has already paid over:",
+    "PaidSum": "€ 115286321",
+    "JoinNow": "Join now"
+  },
+  "es-CR": {
+    "MainText": "El sistema ya ha pagado más de:",
+    "PaidSum": "₡ 68018929390",
+    "JoinNow": "Únete ahora"
+  }
+}

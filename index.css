@@ -1,120 +1,137 @@
 @font-face {
-  font-family: "Roboto";
-  src: url("Roboto-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
+    font-family: "Roboto";
+    src: url("Roboto-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
 }
+
 @font-face {
-  font-family: "Roboto";
-  src: url("Roboto-Black.ttf") format("truetype");
-  font-weight: 900;
-  font-style: normal;
+    font-family: "Roboto";
+    src: url("Roboto-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
 }
+
 @keyframes widget-scale-animation {
-  0% {
-    transform: scale(0.9);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(0.9);
-  }
+    0% {
+        transform: scale(0.9);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(0.9);
+    }
 }
+
 .widget-footbar {
-  font-family: "Roboto", sans-serif !important;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 20px !important;
-  width: 100% !important;
-  position: fixed;
-  bottom: 0;
-  background: white !important;
-  color: black !important;
-  height: 0;
-  overflow: hidden !important;
-  transition: 1s height ease;
+    font-family: "Roboto", sans-serif !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px !important;
+    width: 100% !important;
+    position: fixed;
+    bottom: 0;
+    background: white !important;
+    color: black !important;
+    height: 0;
+    overflow: hidden !important;
+    transition: 1s height ease;
 }
+
 .widget-footbar .widget-footbar-container {
-  border: 3px solid black;
-  padding: 2px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+    border: 3px solid black;
+    padding: 2px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
+
 .widget-footbar .widget-footbar-container .widget-footbar-logo {
-  max-width: 35px;
+    max-width: 35px;
 }
+
 .widget-footbar .widget-footbar-container .widget-footbar-text .widget-footbar-sum {
-  color: #65c466;
-  font-weight: 900 !important;
-  display: inline-block !important;
-  animation: widget-scale-animation 2s infinite ease-in-out;
+    color: #65c466;
+    font-weight: 900 !important;
+    display: inline-block !important;
+    animation: widget-scale-animation 2s infinite ease-in-out;
 }
+
 .widget-footbar .widget-footbar-container .widget-footbar-link {
-  text-decoration: none !important;
-  color: black !important;
-  font-size: 16px !important;
-  font-weight: 900 !important;
-  padding: 5px 15px;
-  border: 3px solid black;
-  transition: 0.3s all;
+    text-decoration: none !important;
+    color: black !important;
+    font-size: 16px !important;
+    font-weight: 900 !important;
+    padding: 5px 15px;
+    border: 3px solid black;
+    transition: 0.3s all;
 }
+
 .widget-footbar .widget-footbar-container .widget-footbar-link:hover {
-  background-color: black !important;
-  color: white !important;
-  transition: 0.3s all;
+    background-color: black !important;
+    color: white !important;
+    transition: 0.3s all;
 }
+
 .widget-footbar .widget-footbar-container .widget-footbar-close {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  padding: 5px;
-  border: 3px solid grey;
-  transition: 0.3s all;
-  position: absolute;
-  right: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding: 5px;
+    border: 3px solid grey;
+    transition: 0.3s all;
+    position: absolute;
+    right: 20px;
 }
+
 .widget-footbar .widget-footbar-container .widget-footbar-close path {
-  stroke: grey;
-  transition: 0.3s all;
+    stroke: grey;
+    transition: 0.3s all;
 }
+
 .widget-footbar .widget-footbar-container .widget-footbar-close:hover {
-  background: black;
-  border-color: black;
-  transition: 0.3s all;
+    background: black;
+    border-color: black;
+    transition: 0.3s all;
 }
+
 .widget-footbar .widget-footbar-container .widget-footbar-close:hover path {
-  stroke: white;
-  transition: 0.3s all;
+    stroke: white;
+    transition: 0.3s all;
 }
 
 @media (max-width: 769px) {
-  .widget-footbar .widget-footbar-container {
-    flex-direction: column;
-    gap: 5px !important;
-  }
-  .widget-footbar .widget-footbar-container .widget-footbar-text {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  .widget-footbar .widget-footbar-container .widget-footbar-close {
-    top: 10px;
-    right: 10px;
-  }
-  .widget-footbar .widget-footbar-container .widget-footbar-link {
-    font-size: 18px !important;
-  }
-  .widget-footbar .widget-footbar-container .widget-footbar-sum {
-    font-size: 22px !important;
-  }
+    .widget-footbar .widget-footbar-container {
+        flex-direction: column;
+        gap: 5px !important;
+    }
+
+    .widget-footbar .widget-footbar-container .widget-footbar-text {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .widget-footbar .widget-footbar-container .widget-footbar-close {
+        top: 10px;
+        right: 10px;
+    }
+
+    .widget-footbar .widget-footbar-container .widget-footbar-link {
+        font-size: 18px !important;
+    }
+
+    .widget-footbar .widget-footbar-container .widget-footbar-sum {
+        font-size: 22px !important;
+    }
 }
+
 @media (max-width: 500px) {
-  .widget-footbar-container {
-    padding: 2px 50px !important;
-  }
+    .widget-footbar-container {
+        padding: 2px 50px !important;
+    }
 }
 
 /*# sourceMappingURL=index.css.map */
