@@ -39,8 +39,8 @@
     overflow: hidden;
     transition: 1s height ease;
     z-index:10000;
-    -webkit-box-shadow: 1px 1px 24px -15px #000000;
-    box-shadow: 1px 1px 24px -15px #000000;
+    -webkit-box-shadow: 1px 1px 24px -19px #000000;
+    box-shadow: 1px 1px 24px -19px #000000;
 }
 
 html:not(.initialized) .widget-footbar {
@@ -107,6 +107,11 @@ html:not(.initialized) .widget-footbar {
 }
 
 @media (max-width: 769px) {
+    .widget-footbar {
+        -webkit-box-shadow: 1px 1px 24px -15px #000000;
+        box-shadow: 1px 1px 24px -15px #000000;
+    }
+
     .widget-footbar .widget-footbar-container {
         flex-direction: column;
         gap: 2px !important;

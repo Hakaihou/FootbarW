@@ -18,7 +18,7 @@ function updateSum() {
     let currentSum = parseFloat(text.replace(/[^\d]/g, ''));
 
     // Увеличиваем сумму на 150
-    currentSum += 150;
+    currentSum += 75133;
 
     // Форматируем сумму с разделением по 3 числа и добавляем валютный символ
     const formattedSum = currencySymbol + ' ' + formatNumberWithSpaces(currentSum);
