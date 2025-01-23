@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ===== Часть 3: Локализация/переводы =====
 document.addEventListener("DOMContentLoaded", () => {
     const currentLang = document.documentElement.getAttribute("lang") || "en";
-    const translationsPath = "./translate.json"; // Путь к файлу с переводами
+    const translationsPath = "./FootbarW/translate.json"; // Путь к файлу с переводами
 
     // Загрузка переводов из JSON
     fetch(translationsPath)
