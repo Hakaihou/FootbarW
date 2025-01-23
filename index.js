@@ -1,5 +1,8 @@
 // ===== Часть 1: Работа с суммой =====
 // Функция для форматирования суммы с разделением по три числа
+
+const footbarWidgetId = document.getElementById('widget-foorbar');
+
 function formatNumberWithSpaces(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
@@ -89,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ===== Часть 3: Локализация/переводы =====
 document.addEventListener("DOMContentLoaded", () => {
     const currentLang = document.documentElement.getAttribute("lang") || "en";
-    const translationsPath = "./translate.json"; // Путь к файлу с переводами
+    const translationsPath = "./FootbarW/translate.json"; // Путь к файлу с переводами
 
     // Загрузка переводов из JSON
     fetch(translationsPath)
@@ -107,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // Замена текста в элементах с data-i18n
-            document.querySelectorAll("[data-i18n]").forEach(el => {
+            footbarWidgetId.querySelectorAll("[data-i18n]").forEach(el => {
                 const key = el.getAttribute("data-i18n");
                 if (translationsForLang[key]) {
                     el.textContent = translationsForLang[key];
@@ -117,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             // Замена placeholder в элементах с data-i18n-placeholder
-            document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+            footbarWidgetId.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
                 const key = el.getAttribute("data-i18n-placeholder");
                 if (translationsForLang[key]) {
                     el.placeholder = translationsForLang[key];
@@ -127,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             // Замена value в элементах с data-i18n-value
-            document.querySelectorAll("[data-i18n-value]").forEach(el => {
+            footbarWidgetId.querySelectorAll("[data-i18n-value]").forEach(el => {
                 const key = el.getAttribute("data-i18n-value");
                 if (translationsForLang[key]) {
                     el.value = translationsForLang[key];

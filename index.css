@@ -37,6 +37,7 @@
     height: 0;
     overflow: hidden !important;
     transition: 1s height ease;
+    z-index:10000;
 }
 
 .widget-footbar .widget-footbar-container {
