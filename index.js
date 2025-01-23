@@ -45,46 +45,65 @@ setInterval(updateSum, 100);
 
 
 // ===== Часть 2: Анимация появления/закрытия блока footbar =====
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener("load", () => {
     const footbar = document.querySelector('.widget-footbar');
     const closeButton = document.querySelector('.widget-footbar-close');
 
     if (footbar) {
-        // Анимация появления
-        footbar.style.height = '0';
-        const contentHeight = footbar.scrollHeight + 'px';
+        // Сбрасываем все потенциальные кешированные стили
+        footbar.removeAttribute('style');
 
-        setTimeout(() => {
-            footbar.style.height = contentHeight;
+        // Принудительная синхронизация перед измерениями
+        requestAnimationFrame(() => {
+            // Фиксируем начальную высоту контента
+            footbar.style.display = 'block'; // Гарантируем видимость
+            footbar.style.transition = 'none';
+            footbar.style.height = 'auto';
+            const initialContentHeight = footbar.offsetHeight;
+            footbar.style.height = '0';
+            footbar.style.overflow = 'hidden';
+            footbar.style.transition = 'height 1s ease-in-out';
 
-            footbar.addEventListener(
-                'transitionend',
-                () => {
-                    footbar.style.height = 'auto'; // Сбрасываем высоту после раскрытия
-                },
-                {once: true}
-            );
-        }, 100);
+            // Анимация появления
+            setTimeout(() => {
+                footbar.style.height = initialContentHeight + 'px';
 
-        // Анимация закрытия
-        if (closeButton) {
-            closeButton.addEventListener('click', () => {
-                footbar.style.height = contentHeight; // Обновляем высоту перед скрытием
-                setTimeout(() => {
-                    footbar.style.height = '0';
+                footbar.addEventListener(
+                    'transitionend',
+                    () => {
+                        footbar.style.height = 'auto';
+                        footbar.style.overflow = 'visible';
+                    },
+                    { once: true }
+                );
+            }, 100);
 
-                    footbar.addEventListener(
-                        'transitionend',
-                        (e) => {
-                            if (e.propertyName === 'height') {
-                                footbar.remove(); // Удаляем блок после завершения анимации
-                            }
-                        },
-                        {once: true}
-                    );
-                }, 50);
-            });
-        }
+            // Анимация закрытия
+            if (closeButton) {
+                closeButton.addEventListener('click', () => {
+                    // Обновляем высоту перед анимацией закрытия
+                    requestAnimationFrame(() => {
+                        const currentHeight = footbar.offsetHeight;
+                        footbar.style.height = currentHeight + 'px';
+                        footbar.style.overflow = 'hidden';
+
+                        setTimeout(() => {
+                            footbar.style.height = '0';
+
+                            footbar.addEventListener(
+                                'transitionend',
+                                (e) => {
+                                    if (e.propertyName === 'height') {
+                                        footbar.remove();
+                                    }
+                                },
+                                { once: true }
+                            );
+                        }, 50);
+                    });
+                });
+            }
+        });
     }
 });
 
